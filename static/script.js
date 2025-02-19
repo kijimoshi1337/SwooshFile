@@ -29,6 +29,25 @@ document.addEventListener('DOMContentLoaded', function () {
         bundleModal.style.display = 'none';
     });
 
+    document.querySelectorAll('button, .btn').forEach(btn => {
+    	btn.addEventListener('mousedown', () => {
+        btn.style.transform = 'scale(0.98)';
+        });
+    
+	btn.addEventListener('mouseup', () => {
+        btn.style.transform = 'scale(1)';
+        });
+    
+        btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'scale(1)';
+        });
+    });
+
+    // Add file item entry animation
+    function addFileItemAnimation(element) {
+    	element.style.animation = 'slideIn 0.4s forwards';
+    }
+
     // Create bundle and upload files
     createBundleButton.addEventListener('click', function () {
         const bundleName = bundleNameInput.value || 'bundle_01.zip';

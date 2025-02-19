@@ -31,7 +31,7 @@ scheduler = BackgroundScheduler(timezone=pytz.UTC)  # Use UTC timezone (or your 
 scheduler.add_job(func=delete_old_files, trigger='interval', hours=1)
 
 def get_next_bundle_name():
-    base_name = "Bundle"
+    base_name = "bundle"
     count = 1
     while True:
         bundle_name = f"{base_name}_{count:02d}.zip"

@@ -1,0 +1,193 @@
+/* Base Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transform: translateY(0);
+    animation: containerEntrance 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes containerEntrance {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+h1 {
+    background: linear-gradient(135deg, #007bff 0%, #00b4d8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    animation: textFadeIn 0.8s ease-out;
+}
+
+/* Drop Area Enhancements */
+#drop-area {
+    border: 2px dashed rgba(0, 123, 255, 0.3);
+    padding: 40px 20px;
+    margin: 30px 0;
+    border-radius: 16px;
+    background: rgba(231, 245, 255, 0.5);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+#drop-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 2s infinite;
+}
+
+#drop-area.highlight {
+    background: rgba(224, 240, 255, 0.7);
+    border-color: #007bff;
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 123, 255, 0.1);
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Interactive Elements */
+#upload-button {
+    background: linear-gradient(135deg, #007bff 0%, #00b4d8 100%);
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: scale(1);
+    box-shadow: 0 4px 14px rgba(0, 123, 255, 0.2);
+}
+
+#upload-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+}
+
+#upload-button:active {
+    transform: scale(0.98);
+}
+
+/* File Items Animation */
+.file-item {
+    animation: slideIn 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    transform: translateX(30px);
+    opacity: 0;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Hover Effects */
+.file-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button Animations */
+.preview-btn, .download-btn, .delete-btn {
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+.preview-btn::after, .download-btn::after, .delete-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: 0.3s;
+}
+
+.preview-btn:hover::after, .download-btn:hover::after, .delete-btn:hover::after {
+    left: 100%;
+}
+
+/* Modal Animation */
+.modal {
+    animation: modalFadeIn 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes modalFadeIn {
+    0% {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+        backdrop-filter: blur(8px);
+    }
+}
+
+.modal-content {
+    animation: modalSlideIn 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes modalSlideIn {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Progress Animation */
+@keyframes progressBar {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 0; }
+}
+
+/* Utility Classes */
+.scale-in {
+    animation: scaleIn 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes scaleIn {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
