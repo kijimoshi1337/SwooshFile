@@ -55,15 +55,18 @@ def upload_file():
     if create_bundle and not bundle_name:
         bundle_name = get_next_bundle_name()
 
-    # Create zip file instead of a folder
     if create_bundle:
         zip_path = os.path.join(UPLOAD_FOLDER, bundle_name)
         with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
             for file in files:
                 if file.filename == '':
                     continue
-                filename = secure_filename(file.filename)
-                zipf.writestr(filename, file.read())  # Write file content directly into the zip
+                filename = file.filename
+                # Split into path components and sanitize each
+                path_parts = filename.split('/')
+                safe_parts = [secure_filename(part) for part in path_parts]
+                safe_filename = '/'.join(safe_parts).lstrip('/')
+                zipf.writestr(safe_filename, file.read())
     else:
         for file in files:
             if file.filename == '':
@@ -98,4 +101,4 @@ def preview_file(filename):
 
 if __name__ == '__main__':
     scheduler.start()
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=True)

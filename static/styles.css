@@ -20,14 +20,21 @@ h1 {
     text-align: center;
 }
 
+/* Upload Section */
+.upload-section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
 #drop-area {
     border: 2px dashed #007bff;
     padding: 20px;
-    margin: 20px 0;
     border-radius: 8px;
     background: #e3f2fd;
 }
-
 
 #drop-area.highlight {
     background: #e2f0ff;
@@ -41,86 +48,124 @@ h1 {
     margin: 10px 0;
 }
 
+.upload-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#upload-button, #folder-upload-button {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: transform 0.2s ease;
+}
+
 #upload-button {
     background: #007bff;
     color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
+}
+
+#folder-upload-button {
+    background: #4CAF50;
+    color: white;
+}
+
+#upload-button:hover, #folder-upload-button:hover {
+    transform: translateY(-1px);
 }
 
 #upload-button:hover {
     background: #0056b3;
 }
 
-.upload-list {
-    margin-top: 15px;
+#folder-upload-button:hover {
+    background: #28832b;
 }
 
-.upload-item {
-    background: #e9ecef;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 5px;
-}
-
-.file-list {
+/* File List Section */
+.files-section {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
     margin-top: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
+.files-section h2 {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+/* File Items with Truncation */
 .file-item {
     background: white;
-    padding: 15px;
-    margin: 12px 0;
-    border-radius: 10px;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.file-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    border-color: #007bff;
+}
+
+.file-name {
+    flex: 1;
+    color: #444;
+    font-size: 0.95rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0; /* Crucial for truncation */
+    padding-right: 15px;
 }
 
 .file-actions {
     display: flex;
     gap: 12px;
-    align-items: center;
+    flex-shrink: 0; /* Prevent button shrinking */
 }
 
-.preview-btn, .download-btn {
+/* Action Buttons */
+.preview-btn, .download-btn, .delete-btn {
     padding: 8px 15px;
     border-radius: 5px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
     text-decoration: none;
-    color: white;
-    font-size: 14px;
+    cursor: pointer;
+    border: none;
 }
 
 .preview-btn {
     background: #17a2b8;
+    color: white;
 }
 
 .download-btn {
     background: #007bff;
+    color: white;
 }
 
 .delete-btn {
     background: #dc3545;
     color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
 }
 
-.delete-btn:hover {
-    background: #c82333;
-}
-
-.preview-btn:hover, .download-btn:hover {
-    opacity: 0.9;
-}
-
+/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -190,4 +235,27 @@ h1 {
 
 #upload-individual:hover {
     background: #5a6268;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 20px auto;
+    }
+    
+    .file-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .file-actions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+    
+    .file-name {
+        max-width: 100%;
+    }
 }

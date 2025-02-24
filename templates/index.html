@@ -12,12 +12,39 @@
     <div class="container">
         <h1>SwooshFile</h1>
 
-        <!-- Drag and Drop Upload Area -->
-        <div id="drop-area">
-            <input type="file" id="fileElem" name="file" multiple hidden>
-            <label for="fileElem" id="file-label">Drag & Drop files here or click to upload</label>
-            <div id="upload-list" class="upload-list"></div>
-            <button type="button" id="upload-button">Upload</button>
+        <!-- Upload Section -->
+        <div class="upload-section">
+            <div id="drop-area">
+                <input type="file" id="fileElem" name="file" multiple hidden>
+                <input type="file" id="folderElem" name="folder" webkitdirectory mozdirectory hidden>
+                <label for="fileElem" id="file-label">Drag & Drop files here or click to upload</label>
+                <div class="upload-buttons">
+                    <button type="button" id="upload-button">Upload Files</button>
+                    <button type="button" id="folder-upload-button">Upload Folder</button>
+                </div>
+                <div id="upload-list" class="upload-list"></div>
+            </div>
+        </div>
+
+        <!-- File List Section -->
+        <div class="files-section">
+            <h2>Uploaded Files:</h2>
+            <div id="file-list">
+                {% for file in files %}
+                    <div class="file-item">
+                        <span class="file-name">{{ file }}</span>
+                        <div class="file-actions">
+                            {% if file.lower().split('.')[-1] in ['png', 'jpg', 'jpeg', 'gif', 'pdf'] %}
+                                <a href="{{ url_for('preview_file', filename=file) }}" target="_blank" class="preview-btn">Preview</a>
+                            {% endif %}
+                            <a href="{{ url_for('download_file', filename=file) }}" class="download-btn">Download</a>
+                            <form action="{{ url_for('delete_file', filename=file) }}" method="post" class="delete-form">
+                                <button type="submit" class="delete-btn">🗑 Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
 
         <!-- Bundle Creation Modal -->
@@ -32,7 +59,7 @@
             </div>
         </div>
 
-        <!-- File List -->
+        <!-- File List
         <h2>Files:</h2>
         <div id="file-list">
             {% for file in files %}
@@ -49,7 +76,7 @@
                     </div>
                 </div>
             {% endfor %}
-        </div>
+        </div> -->
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
