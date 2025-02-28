@@ -6,7 +6,8 @@
     <title>SwooshFile</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='animations.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
     <div class="container">
@@ -19,8 +20,16 @@
                 <input type="file" id="folderElem" name="folder" webkitdirectory mozdirectory hidden>
                 <label for="fileElem" id="file-label">Drag & Drop files here or click to upload</label>
                 <div class="upload-buttons">
-                    <button type="button" id="upload-button">Upload Files</button>
-                    <button type="button" id="folder-upload-button">Upload Folder</button>
+                    <button type="button" id="upload-button">
+                        <i class="material-icons">
+                            upload
+                        </i>
+                    </button>
+                    <button type="button" id="folder-upload-button">
+                        <i class="material-icons">
+                            drive_folder_upload
+                        </i>
+                    </button>
                 </div>
                 <div id="upload-list" class="upload-list"></div>
             </div>
@@ -35,11 +44,23 @@
                         <span class="file-name">{{ file }}</span>
                         <div class="file-actions">
                             {% if file.lower().split('.')[-1] in ['png', 'jpg', 'jpeg', 'gif', 'pdf'] %}
-                                <a href="{{ url_for('preview_file', filename=file) }}" target="_blank" class="preview-btn">Preview</a>
+                                <a href="{{ url_for('preview_file', filename=file) }}" target="_blank" class="preview-btn">
+                                    <i class="material-icons">
+                                        visibility
+                                    </i>
+                                </a>
                             {% endif %}
-                            <a href="{{ url_for('download_file', filename=file) }}" class="download-btn">Download</a>
+                            <a href="{{ url_for('download_file', filename=file) }}" class="download-btn">
+                                <i class="material-icons">
+                                    download
+                                </i>
+                            </a>
                             <form action="{{ url_for('delete_file', filename=file) }}" method="post" class="delete-form">
-                                <button type="submit" class="delete-btn">🗑 Delete</button>
+                                <button type="submit" class="delete-btn">
+                                    <i class="material-icons">
+                                        delete
+                                    </i>
+                                </button>
                             </form>
                         </div>
                     </div>
