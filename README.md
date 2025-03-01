@@ -29,17 +29,29 @@ SwooshFile is a simple web-browser-based local network file-sharing service that
    cd SwooshFile
    ```
 
-3. Install dependencies:
+3. Create enviroment:
+   ```
+   python3 -m venv venv
+   ```
+
+4. Activate enviroment:
+   ```
+   source venv/bin/activate
+   ```
+
+5. Install dependencies:
    ```
    pip install -r requirements.txt
    ```
 
-4. Start the server:
+6. Start the server:
    ```
    python3 app.py
    ```
 
-5. Open your browser and navigate to `http://localhost:5000` to start sharing files.
+7. Open your browser and navigate to `http://localhost:5050` to start sharing files.
+
+8. To access files from another device check ip address of the host device and navigate to `http://<your ip>:5050`
 
 ## Tested Environment
 This application has been tested on the following platforms:
