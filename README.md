@@ -56,13 +56,12 @@ SwooshFile is a simple web-browser-based local network file-sharing service that
 ## Tested Environment
 This application has been tested on the following platforms:
 - Windows 10 & 11
-- macOS Ventura
+- macOS Sequoia
 - Ubuntu 22.04
-- Android 14 (Chrome, Firefox)
+- Android 15 (Chrome, Firefox)
 - iOS 16 (Safari, Chrome)
 
 ## Support the Project ☕️
 If you find SwooshFile useful and would like to support its development, consider buying me a coffee!
 
 [PayPal](https://www.paypal.me/kijimoshi05)
-
