@@ -68,6 +68,16 @@
                 {% endfor %}
             </div>
         </div>
+        <!-- Clipboard Section -->
+        <div class="clipboard-section">
+            <h2>Shared Clipboard</h2>
+            <form method="POST" action="/">
+                <textarea name="clipboard" placeholder="Paste text here to share between devices...">{{ clipboard }}</textarea>
+                <button type="submit">
+                    <i class="material-icons">save</i> Save Clipboard
+                </button>
+            </form>
+        </div>
 
         <!-- Bundle Creation Modal -->
         <div id="bundle-modal" class="modal">
