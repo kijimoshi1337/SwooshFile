@@ -1,7 +1,9 @@
 ## Table of Contents
 - [SwooshFile](#swooshfile)
   - [Features](#features)
-  - [Installation](#installation)
+  - [Manual Installation](#manual-installation)
+  - [Docker](#docker)
+  - [Usage](#usage)
   - [Tested Environment](#tested-environment)
 
 # SwooshFile
@@ -15,7 +17,7 @@ SwooshFile is a simple web-browser-based local network file-sharing service that
 - User-friendly web-based interface.
 - Secure and fast transfers.
 
-## Installation
+## Manual Installation
 
 **SwooshFile, for now, has to be self-hosted. Follow the steps below to set up your own instance:**
 
@@ -49,17 +51,31 @@ SwooshFile is a simple web-browser-based local network file-sharing service that
    python3 app.py
    ```
 
-7. Open your browser and navigate to `http://localhost:5050` to start sharing files.
+## Docker
 
-8. To access files from another device check ip address of the host device and navigate to `http://<your ip>:5050`
+To build a docker container image use:
+```
+docker build -t swooshfile:latest .
+```
+
+Then start the container:
+```
+sudo docker run --name swooshfile -d -p 80:80 -v /app/uploads/:/app/uploads/:z --restart unless-stopped swooshfile:latest
+```
+
+## Usage
+
+1. Open your browser and navigate to `http://localhost` to start sharing files.
+
+2. To access files from another device check ip address of the host device and navigate to `http://<your ip>`
 
 ## Tested Environment
 This application has been tested on the following platforms:
 - Windows 10 & 11
-- macOS Sequoia
+- macOS Tahoe
 - Ubuntu 22.04
 - Android 15 (Chrome, Firefox)
-- iOS 16 (Safari, Chrome)
+- iOS 26.1 (Safari, Chrome)
 
 ## Support the Project ☕️
 If you find SwooshFile useful and would like to support its development, consider buying me a coffee!
